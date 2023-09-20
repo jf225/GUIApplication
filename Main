@@ -1,0 +1,54 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.Period;
+
+import javax.swing.*;
+
+public class Main implements ActionListener{
+	
+	static TextField tf1=new TextField(); 
+	static TextField tf2=new TextField(); 
+	
+	public static void main(String[] args) {
+		
+		
+	    JFrame f=new JFrame("ActionListener Example");   
+	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel panel=new JPanel();  
+        panel.setBounds(50,50,600,400);    
+        panel.setBackground(Color.gray);  
+	    JButton b=new JButton("Calculate Age");  
+	    b.setBounds(280,150,180,150);
+	    b.setBackground(Color.green);   
+	    b.addActionListener(new Main()); 
+	    tf1.setBounds(50,200, 200,70);  
+	    tf1.setText("Enter birth date as yyyy-mm-dd");
+	    tf2.setBounds(490,200, 200,70); 
+	    f.add(b); f.add(tf1);  f.add(tf2); 
+        
+        f.setSize(760,500);    
+        f.setLayout(null);    
+        f.setVisible(true);        
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		LocalDate dob = LocalDate.parse(tf1.getText());  
+		tf2.setText("Your age is " + String.valueOf(calculateAge(dob)));  
+	}
+	
+	public static int calculateAge(LocalDate dob)   {        
+		LocalDate curDate = LocalDate.now();  
+		if ((dob != null) && (curDate != null))   {  
+			return Period.between(dob, curDate).getYears();  
+		}  
+		else  {  
+			return 0;  
+		}  
+	}  
+	
+}
