@@ -14,7 +14,7 @@ public class Main implements ActionListener{
 	public static void main(String[] args) {
 		
 		
-	    JFrame f=new JFrame("ActionListener Example");   
+	    JFrame f=new JFrame("Age Calculator");   
 	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel panel=new JPanel();  
         panel.setBounds(50,50,600,400);    
